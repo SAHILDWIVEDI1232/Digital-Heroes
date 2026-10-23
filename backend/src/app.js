@@ -23,13 +23,20 @@ app.set("trust proxy", 1);
 app.use(helmet());
 
 
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://digital-heroes-one-opal.vercel.app",
+  "https://frontend-g8x8.vercel.app",
+  "https://frontend-g8x8-2zo68036i-sahil-dwivedis-projects-98098e31.vercel.app",
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://digital-heroes-one-opal.vercel.app",
-    ],
+    origin: allowedOrigins,
     credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
