@@ -18,6 +18,7 @@ import { notFound, errorHandler } from "./middleware/errorHandler.js";
 import contributionRoutes from "./modules/subscriptions/contribution.routes.js";
 import adminRoutes from "./modules/admin/admin.routes.js";
 const app = express();
+app.set("trust proxy", 1);
 
 app.use(helmet());
 
@@ -33,14 +34,27 @@ app.use(
 );
 
 
+// app.use(
+//   rateLimit({
+//     windowMs: 15 * 60 * 1000,
+//     limit: 200,
+//     standardHeaders: "draft-8",
+//     legacyHeaders: false,
+//   })
+// );
+
 app.use(
   rateLimit({
     windowMs: 15 * 60 * 1000,
     limit: 200,
     standardHeaders: "draft-8",
     legacyHeaders: false,
+    validate: {
+      forwardedHeader: false,
+    },
   })
 );
+
 
 if (env.NODE_ENV !== "test") {
   app.use(morgan("dev"));
