@@ -25,12 +25,12 @@ app.use(helmet());
 
 
 
+
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://digital-heroes-one-opal.vercel.app",
+  "https://frontend-seven-lime-70.vercel.app",
   "https://frontend-g8x8.vercel.app",
-  "https://frontend-g8x8-2zo68036i-sahil-dwivedis-projects-98098e31.vercel.app",
-  "https://frontend-g8x8-nm7ptyl9n-sahil-dwivedis-projects-98098e31.vercel.app",
+  "https://digital-heroes-one-opal.vercel.app",
 ];
 
 app.use(
